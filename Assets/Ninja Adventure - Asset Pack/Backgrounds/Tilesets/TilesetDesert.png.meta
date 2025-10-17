@@ -1,0 +1,1182 @@
+fileFormatVersion: 2
+guid: 4417f2144154b614b8f74c5b0dea947a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TilesetDesert_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 48
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afca85053d102704dba93b28ad889bd6
+      internalID: 1157412938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_44
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 64
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fab3dc9a2b3e174e90b846a7a4826b9
+      internalID: 1172146730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_48
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 96
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0212bcc9e01db2d4bb573d1eca96fd8f
+      internalID: 419423141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33cd4c11fe5c2134db484e19b9728335
+      internalID: -117811974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_75
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: febb78de7ea76ff4bbdcd7fe5d3f36eb
+      internalID: -1934753322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_77
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7fdda232fb360c44b8a36ebb1f81d2f
+      internalID: -472195644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_78
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 48
+        height: 80
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b4d16a4d8d2c4448a00bf97e6ea792
+      internalID: 650391489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_95
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a633163a7f57234eb031bb07fa491d0
+      internalID: -1915991540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_96
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92724286434378445ab14e16bef52877
+      internalID: 1674506115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_103
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 80
+        width: 64
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e73103b1d05aaf147a848f6f1a55f053
+      internalID: -1912976887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_119
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a3de42debf2f4745ac84bf186676ca3
+      internalID: -533550989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_128
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 80
+        width: 48
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900067bc7e9520145aab453e087ffbd3
+      internalID: -603296765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_149
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 32
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df868478f4a083458b2a5d991280ed9
+      internalID: -1369361674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_155
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52062d8ca9a20f149b9334eb35eecfe2
+      internalID: -986947939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_157
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad761541fd74da44a630a284b67a1bf
+      internalID: -1774278063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_171
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 64
+        height: 80
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6942cc270f23e4242b35b4f8cd31b3ce
+      internalID: -640819960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_176
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b84b7d339d425ef42909c99c992bce4e
+      internalID: -1287596347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_177
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 903800392c0de6043a66fc4c377a57b7
+      internalID: 956140987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_178
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 64
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7034649895b67eb44b24ef9fba2916fe
+      internalID: -1213571331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_182
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 48
+        height: 96
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef752d1b3e0fe5b48bb04ad5f5e0b611
+      internalID: 1231463930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_185
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 32
+        width: 48
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb9533ae9900f543bafb01ff4528029
+      internalID: -2003158052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_194
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 681e02a840ed25844a3fd2d8fb5b8a5a
+      internalID: -2032103151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_202
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7d5138409943a4380fbf6670ef37e5
+      internalID: 1737613789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_204
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7be11c0b69302640975dc0b6d244c22
+      internalID: -854665287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_205
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 16
+        width: 32
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a956cf16113061478290e09b72f2b3e
+      internalID: 681028228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_207
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 16
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3139ebbc14730a42b02dfed03870cd5
+      internalID: -429704447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_208
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b7b826880920d148924bb2c1046d585
+      internalID: 315301848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_210
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4673c09fc8f3da640b9d6636cab3b2c0
+      internalID: 1481513668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_212
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd373528925a9c4abd82eedd909dc97
+      internalID: 889777723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_214
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985a4fa5abbe4bb42996129c3d2aa374
+      internalID: 2097140750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_215
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979a377b05d3597438be7fa8eff46e8a
+      internalID: 1659837492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_216
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee645ef48799ca4fa7b6e65d5552d65
+      internalID: 1572552349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_218
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bb0da414f919a54db8b7b6d1ee1cdee
+      internalID: -737544558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_220
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a03bf792a2e9e4ea585ba0ac8c2e4a
+      internalID: 282328853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_222
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ca2cf50191b5e4eb5c0d775923afe9
+      internalID: -1804512397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_223
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 16
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65ab31668559270438a12521866fa23b
+      internalID: 1186854017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_224
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd90a4a21d38d44f8d1dd045d060c69
+      internalID: 645314297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_225
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f2304af9f7ab248bcd80210fde24ce
+      internalID: 1187308489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_226
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d8b6f8b8f9323d409f97c97fa239799
+      internalID: -2100912876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TilesetDesert_227
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6abfc5c5d39f3b1409780d345c2dbee7
+      internalID: 197223614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      TilesetDesert_0: -543661985
+      TilesetDesert_1: -847474588
+      TilesetDesert_10: 562938122
+      TilesetDesert_100: -115255788
+      TilesetDesert_101: 1135400943
+      TilesetDesert_102: 1713116074
+      TilesetDesert_103: -1912976887
+      TilesetDesert_104: -258954986
+      TilesetDesert_105: 541606322
+      TilesetDesert_106: 722698405
+      TilesetDesert_107: 87705068
+      TilesetDesert_108: 195803609
+      TilesetDesert_109: 58661440
+      TilesetDesert_11: 1302674135
+      TilesetDesert_110: -767515831
+      TilesetDesert_111: -698359558
+      TilesetDesert_112: -989075393
+      TilesetDesert_113: 134833779
+      TilesetDesert_114: -810646296
+      TilesetDesert_115: -10483876
+      TilesetDesert_116: 557349927
+      TilesetDesert_117: -1618713488
+      TilesetDesert_118: 1614745126
+      TilesetDesert_119: -533550989
+      TilesetDesert_12: -310109567
+      TilesetDesert_120: -96922722
+      TilesetDesert_121: 2100127684
+      TilesetDesert_122: 1860471398
+      TilesetDesert_123: 2143382581
+      TilesetDesert_124: -1782103
+      TilesetDesert_125: -244891088
+      TilesetDesert_126: -2066568748
+      TilesetDesert_127: -1058106769
+      TilesetDesert_128: -603296765
+      TilesetDesert_129: -1085202490
+      TilesetDesert_13: -1187181398
+      TilesetDesert_130: 1835163652
+      TilesetDesert_131: -293536024
+      TilesetDesert_132: -493048752
+      TilesetDesert_133: -826380003
+      TilesetDesert_134: 1517516545
+      TilesetDesert_135: 1518881060
+      TilesetDesert_136: 783439353
+      TilesetDesert_137: -1729662931
+      TilesetDesert_138: -1960496459
+      TilesetDesert_139: 1242538483
+      TilesetDesert_14: 1618032697
+      TilesetDesert_140: 913305678
+      TilesetDesert_141: -873496151
+      TilesetDesert_142: -968924238
+      TilesetDesert_143: 1678048543
+      TilesetDesert_144: -1081855344
+      TilesetDesert_145: -58815552
+      TilesetDesert_146: -290030068
+      TilesetDesert_147: -582722562
+      TilesetDesert_148: 2020025715
+      TilesetDesert_149: -1369361674
+      TilesetDesert_15: -397372316
+      TilesetDesert_150: -1995806355
+      TilesetDesert_151: 1089237987
+      TilesetDesert_152: 120449242
+      TilesetDesert_153: 791023060
+      TilesetDesert_154: 1318854788
+      TilesetDesert_155: -986947939
+      TilesetDesert_156: -1344630104
+      TilesetDesert_157: -1774278063
+      TilesetDesert_158: -287156794
+      TilesetDesert_159: -133792344
+      TilesetDesert_16: 945522615
+      TilesetDesert_160: 766249470
+      TilesetDesert_161: -759468448
+      TilesetDesert_162: -78141782
+      TilesetDesert_163: 644532569
+      TilesetDesert_164: -1537172721
+      TilesetDesert_165: -1605477754
+      TilesetDesert_166: -1154217025
+      TilesetDesert_167: 1255233976
+      TilesetDesert_168: -858329072
+      TilesetDesert_169: -1366646216
+      TilesetDesert_17: -749766385
+      TilesetDesert_170: -1504280310
+      TilesetDesert_171: -640819960
+      TilesetDesert_172: 1398043451
+      TilesetDesert_173: 1820876913
+      TilesetDesert_174: -961416761
+      TilesetDesert_175: 140365233
+      TilesetDesert_176: -1287596347
+      TilesetDesert_177: 956140987
+      TilesetDesert_178: -1213571331
+      TilesetDesert_179: 1259240962
+      TilesetDesert_18: -222053710
+      TilesetDesert_180: -1448667188
+      TilesetDesert_181: 1739338231
+      TilesetDesert_182: 1231463930
+      TilesetDesert_183: 783713150
+      TilesetDesert_184: -1100335768
+      TilesetDesert_185: -2003158052
+      TilesetDesert_186: 508033594
+      TilesetDesert_187: 2130486153
+      TilesetDesert_188: 306689097
+      TilesetDesert_189: 544248257
+      TilesetDesert_19: 48462831
+      TilesetDesert_190: -1350776026
+      TilesetDesert_191: -2079462352
+      TilesetDesert_192: -110288627
+      TilesetDesert_193: 361092823
+      TilesetDesert_194: -2032103151
+      TilesetDesert_195: 1469998364
+      TilesetDesert_196: -1061217616
+      TilesetDesert_197: 354267930
+      TilesetDesert_198: 575122284
+      TilesetDesert_199: -1168475265
+      TilesetDesert_2: -1114123038
+      TilesetDesert_20: -1701916636
+      TilesetDesert_200: -1822161765
+      TilesetDesert_201: 76660088
+      TilesetDesert_202: 1737613789
+      TilesetDesert_203: 637481125
+      TilesetDesert_204: -854665287
+      TilesetDesert_205: 681028228
+      TilesetDesert_206: -1934535538
+      TilesetDesert_207: -429704447
+      TilesetDesert_208: 315301848
+      TilesetDesert_209: 1621587132
+      TilesetDesert_21: 1191974181
+      TilesetDesert_210: 1481513668
+      TilesetDesert_211: -899968991
+      TilesetDesert_212: 889777723
+      TilesetDesert_213: 1591553080
+      TilesetDesert_214: 2097140750
+      TilesetDesert_215: 1659837492
+      TilesetDesert_216: 1572552349
+      TilesetDesert_217: 623666428
+      TilesetDesert_218: -737544558
+      TilesetDesert_219: -2025111525
+      TilesetDesert_22: -349279186
+      TilesetDesert_220: 282328853
+      TilesetDesert_221: -814914699
+      TilesetDesert_222: -1804512397
+      TilesetDesert_223: 1186854017
+      TilesetDesert_224: 645314297
+      TilesetDesert_225: 1187308489
+      TilesetDesert_226: -2100912876
+      TilesetDesert_227: 197223614
+      TilesetDesert_23: 1620998812
+      TilesetDesert_24: 1995755521
+      TilesetDesert_25: 2008256386
+      TilesetDesert_26: 1481480965
+      TilesetDesert_27: 706516031
+      TilesetDesert_28: -468616685
+      TilesetDesert_29: -1722416431
+      TilesetDesert_3: -396824064
+      TilesetDesert_30: -1893707939
+      TilesetDesert_31: 269604024
+      TilesetDesert_32: -1308367533
+      TilesetDesert_33: 2114182059
+      TilesetDesert_34: -765184007
+      TilesetDesert_35: -1344129932
+      TilesetDesert_36: -609639149
+      TilesetDesert_37: -409369312
+      TilesetDesert_38: 1157412938
+      TilesetDesert_39: -1635927136
+      TilesetDesert_4: -945920994
+      TilesetDesert_40: -419205878
+      TilesetDesert_41: 1131988481
+      TilesetDesert_42: -1902460993
+      TilesetDesert_43: -1488930860
+      TilesetDesert_44: 1172146730
+      TilesetDesert_45: -1558877650
+      TilesetDesert_46: 809618117
+      TilesetDesert_47: -1161046798
+      TilesetDesert_48: 419423141
+      TilesetDesert_49: -1001554301
+      TilesetDesert_5: 136129953
+      TilesetDesert_50: 685893196
+      TilesetDesert_51: -697320213
+      TilesetDesert_52: 585717893
+      TilesetDesert_53: 1985892820
+      TilesetDesert_54: 730709244
+      TilesetDesert_55: 1258125588
+      TilesetDesert_56: 1435755814
+      TilesetDesert_57: -1782526351
+      TilesetDesert_58: -876966858
+      TilesetDesert_59: 1915413880
+      TilesetDesert_6: 650361974
+      TilesetDesert_60: -490858484
+      TilesetDesert_61: -1717073596
+      TilesetDesert_62: 1741327639
+      TilesetDesert_63: 278419392
+      TilesetDesert_64: -1098968639
+      TilesetDesert_65: -652829878
+      TilesetDesert_66: -1835409790
+      TilesetDesert_67: 777603516
+      TilesetDesert_68: -1100152652
+      TilesetDesert_69: 1969407030
+      TilesetDesert_7: -343130821
+      TilesetDesert_70: -1146357282
+      TilesetDesert_71: -117811974
+      TilesetDesert_72: 552202209
+      TilesetDesert_73: -216301786
+      TilesetDesert_74: -1462869785
+      TilesetDesert_75: -1934753322
+      TilesetDesert_76: 390336233
+      TilesetDesert_77: -472195644
+      TilesetDesert_78: 650391489
+      TilesetDesert_79: 1324095321
+      TilesetDesert_8: -2146416616
+      TilesetDesert_80: 876933407
+      TilesetDesert_81: 2081158630
+      TilesetDesert_82: -57871110
+      TilesetDesert_83: 97504883
+      TilesetDesert_84: 1856583450
+      TilesetDesert_85: 1754337531
+      TilesetDesert_86: -1190468867
+      TilesetDesert_87: 2010007856
+      TilesetDesert_88: -1337976393
+      TilesetDesert_89: 1651086300
+      TilesetDesert_9: 546354477
+      TilesetDesert_90: 633037496
+      TilesetDesert_91: 208530990
+      TilesetDesert_92: 669709712
+      TilesetDesert_93: 1965928726
+      TilesetDesert_94: -687624856
+      TilesetDesert_95: -1915991540
+      TilesetDesert_96: 1674506115
+      TilesetDesert_97: 1663378096
+      TilesetDesert_98: -2049711874
+      TilesetDesert_99: 1795300055
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
