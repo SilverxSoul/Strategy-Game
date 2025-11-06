@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GridManager : MonoBehaviour
 {
@@ -131,5 +132,88 @@ public class GridManager : MonoBehaviour
                 Gizmos.DrawCube(worldPos, new Vector3(cellSize * 0.8f, cellSize * 0.8f, 0));
             }
         }
+    }
+    // === A* PATHFINDING ===
+    public List<Vector2Int> FindPath(Vector2Int start, Vector2Int end)
+    {
+        if (!IsValidAndEmpty(end.x, end.y)) return null; // Không thể đến đích
+
+        var openSet = new List<Node>();
+        var closedSet = new HashSet<Vector2Int>();
+        var cameFrom = new Dictionary<Vector2Int, Vector2Int>();
+        var gScore = new Dictionary<Vector2Int, float> { [start] = 0 };
+        var fScore = new Dictionary<Vector2Int, float> { [start] = Heuristic(start, end) };
+
+        openSet.Add(new Node(start, fScore[start]));
+
+        while (openSet.Count > 0)
+        {
+            var current = openSet.OrderBy(n => n.f).First();
+            openSet.Remove(current);
+
+            if (current.pos == end)
+                return ReconstructPath(cameFrom, current.pos);
+
+            closedSet.Add(current.pos);
+
+            foreach (var neighbor in GetNeighbors(current.pos))
+            {
+                if (closedSet.Contains(neighbor)) continue;
+
+                float tentativeG = gScore[current.pos] + 1; // Chi phí di chuyển = 1
+
+                if (!gScore.ContainsKey(neighbor) || tentativeG < gScore[neighbor])
+                {
+                    cameFrom[neighbor] = current.pos;
+                    gScore[neighbor] = tentativeG;
+                    fScore[neighbor] = tentativeG + Heuristic(neighbor, end);
+
+                    if (!openSet.Any(n => n.pos == neighbor))
+                        openSet.Add(new Node(neighbor, fScore[neighbor]));
+                }
+            }
+        }
+
+        return null; // Không tìm thấy đường
+    }
+
+    private List<Vector2Int> GetNeighbors(Vector2Int pos)
+    {
+        var neighbors = new List<Vector2Int>();
+        int[,] directions = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } }; // 4 hướng
+
+        for (int i = 0; i < 4; i++)
+        {
+            int nx = pos.x + directions[i, 0];
+            int ny = pos.y + directions[i, 1];
+            if (nx >= 0 && nx < width && ny >= 0 && ny < height && IsValidAndEmpty(nx, ny))
+                neighbors.Add(new Vector2Int(nx, ny));
+        }
+        return neighbors;
+    }
+
+    private float Heuristic(Vector2Int a, Vector2Int b)
+    {
+        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y); // Manhattan distance
+    }
+
+    private List<Vector2Int> ReconstructPath(Dictionary<Vector2Int, Vector2Int> cameFrom, Vector2Int current)
+    {
+        var path = new List<Vector2Int> { current };
+        while (cameFrom.ContainsKey(current))
+        {
+            current = cameFrom[current];
+            path.Add(current);
+        }
+        path.Reverse();
+        return path;
+    }
+
+    // Class hỗ trợ A*
+    private class Node
+    {
+        public Vector2Int pos;
+        public float f;
+        public Node(Vector2Int pos, float f) { this.pos = pos; this.f = f; }
     }
 }
