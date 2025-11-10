@@ -241,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.53, y: 2.5, z: -10}
+  m_LocalPosition: {x: 6.5, y: 2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -463,8 +463,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b189fdb91232d241885072ffbeca1da, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 54a5f53b3ece62b438630aa1a40a12da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -508,6 +508,11 @@ MonoBehaviour:
   height: 25
   tilemap: {fileID: 1820589398}
   cellSize: 1
+  validMoveColor: {r: 0, g: 0.010016918, b: 1, a: 0.3}
+  invalidMoveColor: {r: 1, g: 0, b: 0, a: 0.2}
+  HightlightSprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
+  gridLineColor: {r: 0.4037736, g: 0.4037736, b: 0.4037736, a: 0.22352941}
+  gridLineWidth: 0.03
 --- !u!4 &1039967080
 Transform:
   m_ObjectHideFlags: 0
@@ -605,7 +610,7 @@ Transform:
   m_GameObject: {fileID: 1101900692}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.53, y: 2.5, z: -10}
+  m_LocalPosition: {x: 6.5, y: 2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -891,7 +896,7 @@ Transform:
   m_GameObject: {fileID: 1786310094}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.53, y: 2.5, z: 0}
+  m_LocalPosition: {x: 6.5, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -983,6 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDurationPerCell: 0.3
+  moveRange: 1
 --- !u!95 &1786310100
 Animator:
   serializedVersion: 5
