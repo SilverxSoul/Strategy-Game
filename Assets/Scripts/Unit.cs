@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 public enum AttackShape { Cross, XShape, Melee } // Hình dạng phạm vi tấn công
 public enum Team { Player, Enemy }// Cho Turn base
 public enum Type {Sword, Magic, Shuriken } // Loại vũ khí sử dụng
@@ -13,8 +14,8 @@ public class Unit : MonoBehaviour
     public Type type = Type.Sword;
 
     [Header("Stats")]
-    [SerializeField] private int maxHP = 100;
-    [SerializeField] private int damage = 25;
+    [SerializeField] private int maxHP = 3;
+    [SerializeField] private int damage = 1;
     [SerializeField] private int attackRange = 1; // 1 = 3x3 xung quanh
 
     [Header("Attack Shape")]
@@ -35,6 +36,7 @@ public class Unit : MonoBehaviour
     private Animator animator;
     [SerializeField] private GameObject shurikenPrefab;
     [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private Slider HealthBar;
 
     void Start()
     {
@@ -43,11 +45,9 @@ public class Unit : MonoBehaviour
         currentGridPos = gridManager.WorldToGrid(transform.position);
         gridManager.OccupyCell(currentGridPos.x, currentGridPos.y, gameObject);
         animator = GetComponent<Animator>();
+        UpdateHealth();
         if (team == Team.Player)
             StartTurn();
-
-
-
     }
     public void StartTurn()
     {
@@ -165,12 +165,25 @@ public class Unit : MonoBehaviour
 
     }
 
-    public void Hurt()
+    public void Hurt(int dmg)
     {
         //HP giảm
-
+        currentHP= currentHP - dmg;
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+            Death();
+            return;
+        }
         //Animation hurt
         animator.SetTrigger("Hurt");
+        
+    }
+
+    public void Death()
+    {
+        animator.SetBool("Death",true);
+        Debug.Log(isAlive);
     }
 
     private void PerformAttack()
@@ -189,7 +202,8 @@ public class Unit : MonoBehaviour
                 animator.SetFloat("Vertical", -1);
             }
             animator.SetTrigger("Attack");
-            UnitTakeDamage.Hurt();
+            UnitTakeDamage.Hurt(damage);
+            UnitTakeDamage.UpdateHealth();
         }
 
     }
@@ -211,5 +225,12 @@ public class Unit : MonoBehaviour
     {
         Unit UnitTakeDamage = gridManager.GetUnitOnAttackRange(currentGridPos, attackShape);
         GameObject explosion = Instantiate(explosionPrefab, UnitTakeDamage.transform.position, Quaternion.identity);
+    }
+
+    private void UpdateHealth()
+    {
+        HealthBar.maxValue = maxHP;
+        HealthBar.value = currentHP;
+        
     }
 }
