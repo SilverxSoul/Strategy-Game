@@ -76,7 +76,7 @@ public class Unit : MonoBehaviour
             }
         }
         // Click phải: Hiện attack range
-        if (Input.GetMouseButtonDown(1))
+        if (team == Team.Player && Input.GetMouseButtonDown(1))
         {
             ShowAttackRange();
         }
