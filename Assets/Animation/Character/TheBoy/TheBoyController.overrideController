@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TheBoyController
+  m_Controller: {fileID: 9100000, guid: c1c95a7071c64754685f741e64a08a7c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7f73f42ac18b9f54db9af7800d527170, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7f73f42ac18b9f54db9af7800d527170, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ececc60a605d7e643b7afc668745fc2f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ececc60a605d7e643b7afc668745fc2f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cc0fa1b8abf201146ab1d16f94a93841, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cc0fa1b8abf201146ab1d16f94a93841, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 03a96e1c3c70fd945a5ee75f8e519da3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 03a96e1c3c70fd945a5ee75f8e519da3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1a04eb19df5f5164c96231eff279676e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1a04eb19df5f5164c96231eff279676e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6abf99258fba4b24589ee02eef6ebb82, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6abf99258fba4b24589ee02eef6ebb82, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4c433852c185b2342bf2efb5e6d42a37, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4c433852c185b2342bf2efb5e6d42a37, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 02c3934a63513d0439c2c4e558455bc9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 02c3934a63513d0439c2c4e558455bc9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4c904ef208776e44f82b29943d632343, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4c904ef208776e44f82b29943d632343, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ddf911328da22db42bf2c71e19e5efa1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ddf911328da22db42bf2c71e19e5efa1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0348cc1f1792ab3409d3dc29ad972fef, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0348cc1f1792ab3409d3dc29ad972fef, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: eeb8ecd9f1555b9488215775954e1c3a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eeb8ecd9f1555b9488215775954e1c3a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c7e86d08da2b7454eb18f9b044e51a82, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c7e86d08da2b7454eb18f9b044e51a82, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 94a659b7f978c214cb34783fc8d23da7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 94a659b7f978c214cb34783fc8d23da7, type: 2}

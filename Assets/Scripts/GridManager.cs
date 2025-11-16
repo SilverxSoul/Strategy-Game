@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using System.Linq;
 
+
 public class GridManager : MonoBehaviour
 {
     [SerializeField] private int width = 10; // Chiều rộng lưới
@@ -10,12 +11,19 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Tilemap tilemap; // Kết nối với Tilemap
     [SerializeField] private float cellSize = 1f; // Kích thước ô
                                                   // === HIGHLIGHT SYSTEM ===
-    [Header("Highlight Settings")]
+    [Header("Highlight Movement Settings")]
     [SerializeField] private Color validMoveColor = new Color(1f, 1f, 0f, 0.3f); // Vàng nhạt
     [SerializeField] private Color invalidMoveColor = new Color(1f, 0f, 0f, 0.2f); // Đỏ nhạt
     [SerializeField] private Sprite HightlightSprite; // Sprite dùng để highlight
-
+                                                      // Thêm enum (nếu chưa có)
     private Dictionary<Vector2Int, Color> highlightCells = new Dictionary<Vector2Int, Color>();
+
+    [Header("Hightlight Attack Range Settings")]
+    [SerializeField] private Color crossColor = Color.yellow;
+    [SerializeField] private Color xShapeColor = Color.yellow;
+    public List<Vector2Int> attackCells = new List<Vector2Int>();
+
+    
     [Header("Grid Line Settings")]
     [SerializeField] private Color gridLineColor = new Color(0.3f, 0.3f, 0.3f, 1f);
     [SerializeField] private float gridLineWidth = 0.03f;
@@ -30,7 +38,15 @@ public class GridManager : MonoBehaviour
         public bool isOccupied; // Ô có bị chiếm không
         public GameObject occupant; // Đối tượng chiếm ô (nhân vật, vật cản,...)
     }
-
+    public Unit GetUnitAt(int x, int y)
+    {
+        Vector2Int pos = new Vector2Int(x, y);
+        if (occupied.ContainsKey(pos) && occupied[pos].occupant != null)
+        {
+            return occupied[pos].occupant.GetComponent<Unit>();//nếu occupant này không có component Unit thì cũng tự trả về null
+        }
+        return null;
+    }
     // Dictionary lưu trạng thái ô
     private Dictionary<Vector2Int, CellData> occupied = new Dictionary<Vector2Int, CellData>();
 
@@ -116,7 +132,7 @@ public class GridManager : MonoBehaviour
     }
 
 
-    // Highlight ô hợp lệ
+    // Highlight ô di chuyển hợp lệ
     public void HighlightMoveRange(Vector2Int center, int range = 1)
     {
         ClearHighlights();
@@ -146,6 +162,112 @@ public class GridManager : MonoBehaviour
 
         DrawHighlights();
     }
+
+    //phạm vi tấn công của 1 unit
+    public void AttackRange(Vector2Int center, AttackShape shape)
+    {
+        attackCells.Clear();// xóa phạm vi tấn công ở các vị trí khác để cập nhật phạm vi tấn công hiện tại
+        if (shape == AttackShape.Cross)
+        {
+            // === ĐƯỜNG NGANG TOÀN BẢN ĐỒ ===
+            for (int x = 0; x < width; x++)
+            {
+                if (x != center.x) // Bỏ ô trung tâm (nhân vật)
+                    attackCells.Add(new Vector2Int(x, center.y));
+            }
+
+            // === ĐƯỜNG DỌC TOÀN BẢN ĐỒ ===
+            for (int y = 0; y < height; y++)
+            {
+                if (y != center.y)
+                    attackCells.Add(new Vector2Int(center.x, y));
+            }
+        }
+        else if (shape == AttackShape.XShape)
+        {
+            // === ĐƯỜNG CHÉO 1: \ (từ trên trái xuống dưới phải) ===
+            // Từ (center.x, center.y) → tăng x, tăng y
+            for (int step = 1; step < Mathf.Max(width, height); step++)
+            {
+                int x1 = center.x + step;
+                int y1 = center.y + step;
+                if (x1 < width && y1 < height)
+                    attackCells.Add(new Vector2Int(x1, y1));
+                else
+                    break;
+            }
+            for (int step = 1; step < Mathf.Max(width, height); step++)
+            {
+                int x1 = center.x - step;
+                int y1 = center.y - step;
+                if (x1 >= 0 && y1 >= 0)
+                    attackCells.Add(new Vector2Int(x1, y1));
+                else
+                    break;
+            }
+
+            // === ĐƯỜNG CHÉO 2: / (từ trên phải xuống dưới trái) ===
+            for (int step = 1; step < Mathf.Max(width, height); step++)
+            {
+                int x2 = center.x + step;
+                int y2 = center.y - step;
+                if (x2 < width && y2 >= 0)
+                    attackCells.Add(new Vector2Int(x2, y2));
+                else
+                    break;
+            }
+            for (int step = 1; step < Mathf.Max(width, height); step++)
+            {
+                int x2 = center.x - step;
+                int y2 = center.y + step;
+                if (x2 >= 0 && y2 < height)
+                    attackCells.Add(new Vector2Int(x2, y2));
+                else
+                    break;
+            }
+        }
+        else if (shape == AttackShape.Melee)// phạm vi loại attack cận chiến này là 4 ô xung quanh nhân vật 
+        {
+            attackCells.Add(new Vector2Int(center.x, center.y - 1));
+            attackCells.Add(new Vector2Int(center.x, center.y + 1));
+            attackCells.Add(new Vector2Int(center.x - 1, center.y));
+            attackCells.Add(new Vector2Int(center.x + 1, center.y));
+        }
+    }    
+
+    public Unit GetUnitOnAttackRange(Vector2Int center, AttackShape shape)
+    {
+        AttackRange(center, shape);
+        foreach(Vector2Int pos in attackCells)
+        {
+            if(GetUnitAt(pos.x, pos.y) != null)
+            {
+                Unit unit = GetUnitAt(pos.x, pos.y);
+                if (unit.team == Team.Enemy)
+                    return unit;
+            }
+        }
+        return null;
+    }
+    //Hightlight phạm vi tấn công 
+    public void DrawAttackRangeHighlight(Vector2Int center, AttackShape shape, Color color)
+    {
+        ClearHighlights(); // Xóa highlight cũ
+        AttackRange(center, shape);
+
+        // === HIGHLIGHT TẤT CẢ Ô TRONG PHẠM VI ===
+        foreach (Vector2Int pos in attackCells)
+        {
+            // Chỉ highlight nếu ô trống hoặc có unit khác
+            if (IsValidAndEmpty(pos.x, pos.y) || GetUnitAt(pos.x, pos.y) != null)
+            {
+                highlightCells[pos] = color;
+            }
+        }
+
+        DrawHighlights(); // Vẽ highlight như move range
+    }
+
 
     // Xóa highlight
     public void ClearHighlights()
@@ -256,19 +378,6 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    // Di chuyển unit
-    public bool MoveTo(GameObject unit, int targetX, int targetY)
-    {
-        Vector2Int currentGrid = WorldToGrid(unit.transform.position);
-        if (IsValidAndEmpty(targetX, targetY))
-        {
-            FreeCell(currentGrid.x, currentGrid.y);
-            OccupyCell(targetX, targetY, unit);
-            unit.transform.position = GridToWorld(targetX, targetY);
-            return true;
-        }
-        return false;
-    }
 
     // Debug: Vẽ lưới và ô bị chiếm
     void OnDrawGizmos()

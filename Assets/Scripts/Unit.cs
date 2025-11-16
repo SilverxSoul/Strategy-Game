@@ -1,47 +1,97 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+public enum AttackShape { Cross, XShape, Melee } // Hình dạng phạm vi tấn công
+public enum Team { Player, Enemy }// Cho Turn base
+public enum Type {Sword, Magic, Shuriken } // Loại vũ khí sử dụng
 public class Unit : MonoBehaviour
 {
-    private GridManager gridManager;
-    private bool isMoving = false;
-    private Animator animator;
+    [Header("Team")]
+    public Team team = Team.Player;
+
+    [Header("Weapon")]
+    public Type type = Type.Sword;
+
+    [Header("Stats")]
+    [SerializeField] private int maxHP = 100;
+    [SerializeField] private int damage = 25;
+    [SerializeField] private int attackRange = 1; // 1 = 3x3 xung quanh
+
+    [Header("Attack Shape")]
+    [SerializeField] public AttackShape attackShape = AttackShape.Cross;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveDurationPerCell = 0.3f; // Thời gian di chuyển 1 ô
     [SerializeField] private int moveRange = 1;// 1 = 3x3, 2 = 5x5,...
     private Vector2Int currentGridPos;
+
+    // Private vars
+    private int currentHP;
+    public bool isAlive { get { return currentHP > 0; } }
+    private bool hasMoved = false;
+    private bool hasAttacked = false;
+    private GridManager gridManager;
+    private bool isMoving = false;
+    private Animator animator;
+    [SerializeField] private GameObject shurikenPrefab;
+    [SerializeField] private GameObject explosionPrefab;
+
     void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
+        currentHP = maxHP;
         currentGridPos = gridManager.WorldToGrid(transform.position);
         gridManager.OccupyCell(currentGridPos.x, currentGridPos.y, gameObject);
         animator = GetComponent<Animator>();
+        if (team == Team.Player)
+            StartTurn();
 
-        // Highlight phạm vi ban đầu
+
+
+    }
+    public void StartTurn()
+    {
+        hasMoved = false;
+        hasAttacked = false;
         ShowMoveRange();
+        Debug.Log($"{name} ready to move & attack!");
+        Debug.Log(hasMoved);
+        Debug.Log(isAlive);
     }
 
     void Update()
     {
-        if (isMoving) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (!isAlive || hasMoved) return;
+
+        // Player chỉ di chuyển, Enemy không cần input
+        if (team == Team.Player && Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2Int targetGrid = gridManager.WorldToGrid(mousePos);
 
-            // Kiểm tra target có trong phạm vi 3x3 không
             if (IsInMoveRange(targetGrid))
             {
                 StartCoroutine(MoveToTarget(targetGrid));
             }
         }
-        if(Input.GetKeyDown(KeyCode.S))
+        // Click phải: Hiện attack range
+        if (Input.GetMouseButtonDown(1))
         {
-            animator.SetTrigger("Attack");
+            ShowAttackRange();
         }
+
+        if (team == Team.Player && Input.GetKeyDown(KeyCode.A))
+        {
+            PerformAttack();
+        }
+
+
+    }
+
+    public void ShowAttackRange()
+    {
+        gridManager.DrawAttackRangeHighlight(currentGridPos, attackShape, Color.gray);
     }
     // Hiển thị phạm vi di chuyển 3x3
     public void ShowMoveRange()
@@ -88,7 +138,7 @@ public class Unit : MonoBehaviour
         for (int i = 1; i < path.Count; i++) // Bỏ ô đầu (đang đứng)
         {
             Vector2Int next = path[i];
-            animator.SetFloat("Horizontal",next.x - path[i-1].x);
+            animator.SetFloat("Horizontal", next.x - path[i - 1].x);
             animator.SetFloat("Vertical", next.y - path[i - 1].y);
             Vector3 targetWorld = gridManager.GridToWorld(next.x, next.y);
 
@@ -106,13 +156,60 @@ public class Unit : MonoBehaviour
         }
         // Chiếm ô đích sau khi di chuyển
         gridManager.OccupyCell(target.x, target.y, gameObject);
-        
 
+        //gridManager.AttackRange(currentGridPos, attackShape);//reset lại range attack khi tới vị trí mới
         isMoving = false;
         animator.SetBool("Moving", false);
         animator.SetFloat("Horizontal", 0);
         animator.SetFloat("Vertical", 0);
-        // Hiện lại phạm vi mới
-        ShowMoveRange();
+
+    }
+
+    public void Hurt()
+    {
+        //HP giảm
+
+        //Animation hurt
+        animator.SetTrigger("Hurt");
+    }
+
+    private void PerformAttack()
+    {
+        Unit UnitTakeDamage = gridManager.GetUnitOnAttackRange(currentGridPos, attackShape);
+        if (UnitTakeDamage != null)
+        {
+            if(type!= Type.Magic)
+            {
+                animator.SetFloat("Horizontal", UnitTakeDamage.currentGridPos.x - currentGridPos.x);
+                animator.SetFloat("Vertical", UnitTakeDamage.currentGridPos.y - currentGridPos.y);
+            }
+            else//Magic thì không quan tâm đến vị trí kẻ thù nên chọn animation attack hướng xuống dưới cho toàn bộ loại attack trong animator
+            {
+                animator.SetFloat("Horizontal",0);
+                animator.SetFloat("Vertical", -1);
+            }
+            animator.SetTrigger("Attack");
+            UnitTakeDamage.Hurt();
+        }
+
+    }
+
+
+
+    private void ThrowShuriken()
+    {
+        float shurikenSpeed = 10f;
+        Unit UnitTakeDamage = gridManager.GetUnitOnAttackRange(currentGridPos, attackShape);
+        Vector2 direction = new Vector2(UnitTakeDamage.currentGridPos.x - currentGridPos.x, UnitTakeDamage.currentGridPos.y - currentGridPos.y).normalized;
+        GameObject shuriken = Instantiate(shurikenPrefab, transform.position, Quaternion.identity);
+        shuriken.GetComponent<Projectile>().isPlayerProjectile = (team == Team.Player);
+        shuriken.GetComponent<Rigidbody2D>().velocity = direction * shurikenSpeed;
+        
+    }
+
+    private void CastExplosion()
+    {
+        Unit UnitTakeDamage = gridManager.GetUnitOnAttackRange(currentGridPos, attackShape);
+        GameObject explosion = Instantiate(explosionPrefab, UnitTakeDamage.transform.position, Quaternion.identity);
     }
 }
