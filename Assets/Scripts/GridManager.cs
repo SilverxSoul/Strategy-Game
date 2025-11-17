@@ -38,6 +38,19 @@ public class GridManager : MonoBehaviour
         public bool isOccupied; // Ô có bị chiếm không
         public GameObject occupant; // Đối tượng chiếm ô (nhân vật, vật cản,...)
     }
+
+    public static GridManager Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public Unit GetUnitAt(int x, int y)
     {
         Vector2Int pos = new Vector2Int(x, y);
