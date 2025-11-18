@@ -21,7 +21,6 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("yes");
         if (hasHit) return;
 
         // PLAYER PHI TIÊU: Hit ENEMY

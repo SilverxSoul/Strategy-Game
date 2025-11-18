@@ -248,7 +248,7 @@ public class GridManager : MonoBehaviour
         }
     }    
 
-    public Unit GetUnitOnAttackRange(Vector2Int center, AttackShape shape)
+    public Unit GetUnitOnAttackRange(Vector2Int center, AttackShape shape , Unit unitOfRange)
     {
         AttackRange(center, shape);
         foreach(Vector2Int pos in attackCells)
@@ -256,7 +256,7 @@ public class GridManager : MonoBehaviour
             if(GetUnitAt(pos.x, pos.y) != null)
             {
                 Unit unit = GetUnitAt(pos.x, pos.y);
-                if (unit.team == Team.Enemy)
+                if (unit.team != unitOfRange.team)
                     return unit;
             }
         }

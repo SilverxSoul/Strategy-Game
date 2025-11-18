@@ -571,7 +571,7 @@ Animator:
   m_GameObject: {fileID: 595874576}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c1c95a7071c64754685f741e64a08a7c, type: 2}
+  m_Controller: {fileID: 22100000, guid: e9106f0f453ff3947bd64d7c0871186c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -595,14 +595,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  type: 0
+  type: 2
   maxHP: 3
   damage: 1
-  attackRange: 1
   attackShape: 0
   moveDurationPerCell: 0.3
   moveRange: 1
-  shurikenPrefab: {fileID: 0}
+  shurikenPrefab: {fileID: 9067506398165640886, guid: c89f92ca66313d64ab0cbf93a3c766e4, type: 3}
   explosionPrefab: {fileID: 0}
   HealthBar: {fileID: 506308749}
 --- !u!50 &595874580
@@ -729,17 +728,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &717065900 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4869893551171458274, guid: 4c3e734af6bbd0f488af129faf6502bb, type: 3}
-  m_PrefabInstance: {fileID: 515418831}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f0c93e6c9cb944e94aa56e8bb68fff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &843663725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,11 +1256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d262041c35ca2f34fb7b031247dfe2cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTeam:
-  - {fileID: 1813642987}
-  - {fileID: 717065900}
+  PlayerTeam: []
   EnemyTeam: []
   battleCamera: {fileID: 1101900694}
+  turnText: {fileID: 0}
 --- !u!1 &1341467756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,7 +1753,6 @@ MonoBehaviour:
   type: 1
   maxHP: 3
   damage: 1
-  attackRange: 1
   attackShape: 1
   moveDurationPerCell: 0.3
   moveRange: 3
@@ -1794,17 +1780,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1813642987 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2040950543787238509, guid: 1cfe770a50b58e24a8b6f452ff15684f, type: 3}
-  m_PrefabInstance: {fileID: 949809499}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f0c93e6c9cb944e94aa56e8bb68fff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1820589395
 GameObject:
   m_ObjectHideFlags: 0

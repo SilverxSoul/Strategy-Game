@@ -16,7 +16,6 @@ public class Unit : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private int maxHP = 3;
     [SerializeField] private int damage = 1;
-    [SerializeField] private int attackRange = 1; // 1 = 3x3 xung quanh
 
     [Header("Attack Shape")]
     [SerializeField] public AttackShape attackShape = AttackShape.Cross;
@@ -70,14 +69,11 @@ public class Unit : MonoBehaviour
     {
         int dx = Mathf.Abs(target.x - currentGridPos.x);
         int dy = Mathf.Abs(target.y - currentGridPos.y);
-        return dx <= moveRange && dy <= moveRange && target != currentGridPos;
+        return dx <= moveRange && dy <= moveRange && target != currentGridPos && GridManager.Instance.IsValidAndEmpty(target.x,target.y);
     }
-    public void DoMoveToTarget(Vector2Int target)
-    {
-        StartCoroutine(MoveToTarget(target));
-    }
+    
     // Coroutine: Di chuyển theo đường đi
-    private IEnumerator MoveToTarget(Vector2Int target)
+    public IEnumerator MoveToTarget(Vector2Int target)
     {
         if (isMoving) yield break;
         animator.SetBool("Moving", true);
@@ -89,7 +85,6 @@ public class Unit : MonoBehaviour
 
         List<Vector2Int> path = GridManager.Instance.FindPath(currentGridPos, target); if (path == null || path.Count == 0)
         {
-            Debug.Log("Không tìm thấy đường đi!");
             isMoving = false;
             ShowMoveRange(); // Hiện lại range
             yield break;
@@ -152,10 +147,14 @@ public class Unit : MonoBehaviour
 
     public void PerformAttack()
     {
-        Unit UnitTakeDamage = GridManager.Instance.GetUnitOnAttackRange(currentGridPos, attackShape);
+        Unit UnitTakeDamage = GridManager.Instance.GetUnitOnAttackRange(currentGridPos, attackShape, this);
         if (UnitTakeDamage != null)
         {
-            if(type!= Type.Magic)
+            if(UnitTakeDamage.team == this.team)//không thể tấn công đồng đội cùng phe
+            {
+                return;
+            }
+            if (type!= Type.Magic)
             {
                 animator.SetFloat("Horizontal", UnitTakeDamage.currentGridPos.x - currentGridPos.x);
                 animator.SetFloat("Vertical", UnitTakeDamage.currentGridPos.y - currentGridPos.y);
@@ -177,7 +176,7 @@ public class Unit : MonoBehaviour
     private void ThrowShuriken()
     {
         float shurikenSpeed = 10f;
-        Unit UnitTakeDamage = GridManager.Instance.GetUnitOnAttackRange(currentGridPos, attackShape);
+        Unit UnitTakeDamage = GridManager.Instance.GetUnitOnAttackRange(currentGridPos, attackShape, this);
         Vector2 direction = new Vector2(UnitTakeDamage.currentGridPos.x - currentGridPos.x, UnitTakeDamage.currentGridPos.y - currentGridPos.y).normalized;
         GameObject shuriken = Instantiate(shurikenPrefab, transform.position, Quaternion.identity);
         shuriken.GetComponent<Projectile>().isPlayerProjectile = (team == Team.Player);
@@ -187,7 +186,7 @@ public class Unit : MonoBehaviour
 
     private void CastExplosion()
     {
-        Unit UnitTakeDamage = GridManager.Instance.GetUnitOnAttackRange(currentGridPos, attackShape);
+        Unit UnitTakeDamage = GridManager.Instance.GetUnitOnAttackRange(currentGridPos, attackShape, this);
         GameObject explosion = Instantiate(explosionPrefab, UnitTakeDamage.transform.position, Quaternion.identity);
     }
 
@@ -200,12 +199,9 @@ public class Unit : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //có gì thêm điều kiện trong lượt đồng minh 
-
-        if (team == Team.Player)
+        if(TurnBaseManager.Instance.isPlayerTurn && team == Team.Player)
         {
             GameManager.Instance.SelectAlly(this);
-            Debug.Log(gameObject.name + " được chọn!");
         }
     }
 }
