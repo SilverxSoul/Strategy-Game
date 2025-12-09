@@ -2,10 +2,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 public enum AttackShape { Cross, XShape, Melee } // Hình dạng phạm vi tấn công
 public enum Team { Player, Enemy }// Cho Turn base
 public enum Type {Sword, Magic, Shuriken } // Loại vũ khí sử dụng
-public class Unit : MonoBehaviour
+
+public struct UnitCopy//copy trạng thái Unit phục vụ cho AI đánh giá trạng thái
+{
+    public Team team;
+    public Type type;
+    public int maxHP;
+    public int damage;
+    public AttackShape attackShape;
+    public int moveRange;
+    public Vector2Int currentGridPos;
+    public int currentHP;
+    public bool isAlive { get { return currentHP > 0; } }
+    public Unit unitCopied;//tham chiếu đến Unit gốc nếu cần
+    public UnitCopy(Team team, Type type, int maxHP, int damage, AttackShape attackShape, int moveRange, Vector2Int currentGridPos, int currentHP, Unit unitCopied)
+    {
+        this.team = team;
+        this.type = type;
+        this.maxHP = maxHP;
+        this.damage = damage;
+        this.attackShape = attackShape;
+        this.moveRange = moveRange;
+        this.currentGridPos = currentGridPos;
+        this.currentHP = currentHP;
+        this.unitCopied = unitCopied;
+    }
+}
+public class Unit : MonoBehaviour//, ICloneable
 {
     [Header("Team")]
     public Team team = Team.Player;
@@ -15,26 +42,31 @@ public class Unit : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private int maxHP = 3;
-    [SerializeField] private int damage = 1;
+    public int damage = 1;
 
     [Header("Attack Shape")]
     [SerializeField] public AttackShape attackShape = AttackShape.Cross;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveDurationPerCell = 0.3f; // Thời gian di chuyển 1 ô
-    [SerializeField] private int moveRange = 1;// 1 = 3x3, 2 = 5x5,...
-    private Vector2Int currentGridPos;
+    public int moveRange = 1;// 1 = 3x3, 2 = 5x5,...
+    private Vector2Int currentGridPos;//=GridManager.Instance.WorldToGrid(transform.position)
 
     public bool isAlive { get { return currentHP > 0; } }
+    public int currentHP;
     // Private vars
-    private int currentHP;
     private bool hasAttacked = false;
     private bool isMoving = false;
     private Animator animator;
     [SerializeField] private GameObject shurikenPrefab;
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Slider HealthBar;
+    
 
+    public UnitCopy CreateCopy()
+    {
+        return new UnitCopy(this.team,this.type,this.maxHP,this.damage,this.attackShape,this.moveRange,this.currentGridPos,this.currentHP,this);
+    }
     void Start()
     {
         currentHP = maxHP;
@@ -71,7 +103,6 @@ public class Unit : MonoBehaviour
         int dy = Mathf.Abs(target.y - currentGridPos.y);
         return dx <= moveRange && dy <= moveRange && target != currentGridPos && GridManager.Instance.IsValidAndEmpty(target.x,target.y);
     }
-    
     // Coroutine: Di chuyển theo đường đi
     public IEnumerator MoveToTarget(Vector2Int target)
     {

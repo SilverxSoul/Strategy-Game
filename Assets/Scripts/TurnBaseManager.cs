@@ -71,9 +71,12 @@ public class TurnBaseManager : MonoBehaviour
 
         foreach (Unit unit in PlayerTeam)
         {
-            battleCamera.Follow = unit.transform;
-            unit.PerformAttack();
-            yield return new WaitForSeconds(0.5f);
+            if(unit.isAlive)
+            {
+                battleCamera.Follow = unit.transform;
+                unit.PerformAttack();
+                yield return new WaitForSeconds(0.5f);
+            }
         }
         NextTurn();
     }
@@ -82,9 +85,12 @@ public class TurnBaseManager : MonoBehaviour
 
         foreach (Unit unit in EnemyTeam)
         {
-            battleCamera.Follow = unit.transform;
-            unit.PerformAttack();
-            yield return new WaitForSeconds(0.5f);
+            if(unit.isAlive)
+            {
+                battleCamera.Follow = unit.transform;
+                unit.PerformAttack();
+                yield return new WaitForSeconds(0.5f);
+            }
         }
         NextTurn();
     }

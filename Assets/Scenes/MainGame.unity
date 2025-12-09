@@ -328,7 +328,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3777610830721107283, guid: 4c3e734af6bbd0f488af129faf6502bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 3777610830721107283, guid: 4c3e734af6bbd0f488af129faf6502bb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -372,6 +372,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3860530566997475523, guid: 4c3e734af6bbd0f488af129faf6502bb, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869893551171458274, guid: 4c3e734af6bbd0f488af129faf6502bb, type: 3}
+      propertyPath: maxHP
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4869893551171458274, guid: 4c3e734af6bbd0f488af129faf6502bb, type: 3}
@@ -458,7 +462,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 5.35
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -483,7 +487,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: 2.5, z: -10}
+  m_LocalPosition: {x: 9.47884, y: 5.3361697, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -523,6 +527,50 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &528699125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 528699127}
+  - component: {fileID: 528699126}
+  m_Layer: 0
+  m_Name: AI System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &528699126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528699125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353735d92157d5b44b6df94ba3fa4712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &528699127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528699125}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.5, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &595874576
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +649,7 @@ MonoBehaviour:
   attackShape: 0
   moveDurationPerCell: 0.3
   moveRange: 1
+  currentHP: 0
   shurikenPrefab: {fileID: 9067506398165640886, guid: c89f92ca66313d64ab0cbf93a3c766e4, type: 3}
   explosionPrefab: {fileID: 0}
   HealthBar: {fileID: 506308749}
@@ -831,6 +880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbandonedHouse_6
       objectReference: {fileID: 0}
+    - target: {fileID: 5097724915648176298, guid: 54f8301f4fe97ad47a29e3cb7a3e35bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -933,6 +986,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 843663727}
     m_Modifications:
+    - target: {fileID: 2040950543787238509, guid: 1cfe770a50b58e24a8b6f452ff15684f, type: 3}
+      propertyPath: moveRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5023393458004521126, guid: 1cfe770a50b58e24a8b6f452ff15684f, type: 3}
       propertyPath: m_Name
       value: Knight
@@ -951,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8405549853345581423, guid: 1cfe770a50b58e24a8b6f452ff15684f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 8405549853345581423, guid: 1cfe770a50b58e24a8b6f452ff15684f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1179,7 +1236,7 @@ MonoBehaviour:
   m_Follow: {fileID: 595874577}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 2.5
+    OrthographicSize: 5.35
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1260,6 +1317,7 @@ MonoBehaviour:
   EnemyTeam: []
   battleCamera: {fileID: 1101900694}
   turnText: {fileID: 0}
+  isPlayerTurn: 1
 --- !u!1 &1341467756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,6 +1484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44386806ab8e8e9469aef14ca26e8c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsEnemyActionInProgress: 0
 --- !u!1 &1624908178
 GameObject:
   m_ObjectHideFlags: 3
@@ -1525,6 +1584,10 @@ PrefabInstance:
     - target: {fileID: 2144532638159007250, guid: 73bc9873f69882949bde283b2bdf8afc, type: 3}
       propertyPath: m_Name
       value: AbandonedHouse_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144532638159007250, guid: 73bc9873f69882949bde283b2bdf8afc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3168172176063620203, guid: 73bc9873f69882949bde283b2bdf8afc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1756,6 +1819,7 @@ MonoBehaviour:
   attackShape: 1
   moveDurationPerCell: 0.3
   moveRange: 3
+  currentHP: 0
   shurikenPrefab: {fileID: 9067506398165640886, guid: c89f92ca66313d64ab0cbf93a3c766e4, type: 3}
   explosionPrefab: {fileID: 9124807320726951631, guid: 4a296ae48e4212e42a9375e35c7706e3, type: 3}
   HealthBar: {fileID: 0}
@@ -8634,3 +8698,4 @@ SceneRoots:
   - {fileID: 1044857861}
   - {fileID: 1176739293}
   - {fileID: 1540401798}
+  - {fileID: 528699127}

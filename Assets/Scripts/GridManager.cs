@@ -3,11 +3,17 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using System.Linq;
 
+// Struct lưu thông tin ô
+public struct CellData
+{
+    public bool isOccupied; // Ô có bị chiếm không
+    public GameObject occupant; // Đối tượng chiếm ô (nhân vật, vật cản,...)
+}
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private int width = 10; // Chiều rộng lưới
-    [SerializeField] private int height = 10; // Chiều cao lưới
+    public int width = 10; // Chiều rộng lưới
+    public int height = 10; // Chiều cao lưới
     [SerializeField] private Tilemap tilemap; // Kết nối với Tilemap
     [SerializeField] private float cellSize = 1f; // Kích thước ô
                                                   // === HIGHLIGHT SYSTEM ===
@@ -32,12 +38,10 @@ public class GridManager : MonoBehaviour
     private LineRenderer verticalLinesRenderer;
 
 
-    // Struct lưu thông tin ô
-    public struct CellData
-    {
-        public bool isOccupied; // Ô có bị chiếm không
-        public GameObject occupant; // Đối tượng chiếm ô (nhân vật, vật cản,...)
-    }
+    
+
+    // Dictionary lưu trạng thái ô
+    public Dictionary<Vector2Int, CellData> occupied = new Dictionary<Vector2Int, CellData>();
 
     public static GridManager Instance;
     private void Awake()
@@ -60,9 +64,7 @@ public class GridManager : MonoBehaviour
         }
         return null;
     }
-    // Dictionary lưu trạng thái ô
-    private Dictionary<Vector2Int, CellData> occupied = new Dictionary<Vector2Int, CellData>();
-
+    
     void Start()
     { 
         // Không cần khởi tạo toàn bộ lưới
@@ -174,6 +176,32 @@ public class GridManager : MonoBehaviour
         }
 
         DrawHighlights();
+    }
+
+    public List<Vector2Int> GetPossibleMoveUnit(Vector2Int center, int range)//hoạt động đúng mong đợi
+    {
+        List<Vector2Int> possibleMoves = new List<Vector2Int>();
+        int minX = Mathf.Max(0, center.x - range);
+        int maxX = Mathf.Min(width - 1, center.x + range);
+        int minY = Mathf.Max(0, center.y - range);
+        int maxY = Mathf.Min(height - 1, center.y + range);
+
+        for (int x = minX; x <= maxX; x++)
+        {
+            for (int y = minY; y <= maxY; y++)
+            {
+                Vector2Int pos = new Vector2Int(x, y);
+                if (pos == center) continue; // Bỏ qua vị trí hiện tại
+
+                if (IsValidAndEmpty(x, y))
+                {
+                    possibleMoves.Add(pos);
+                    //Debug.Log("  possible position:" + pos); 
+                }
+            }
+        }
+       
+        return possibleMoves;
     }
 
     //phạm vi tấn công của 1 unit
