@@ -21,7 +21,7 @@ public class AIEnemy : MonoBehaviour
                 List<UnitCopy> EnemyUnitCopies = CreateListCopy(TurnBaseManager.Instance.EnemyTeam);
                 List<Vector2Int> OccupiedCell = CreateCopyOccupiedCells();
                 //foreach (Vector2Int cell in OccupiedCell) Debug.Log(cell); //kiểm tra xem có tạo đúng bản sao các ô bị chiếm không (đúng rồi)
-                searchResult = Minimax(OccupiedCell, PlayerUnitCopies, EnemyUnitCopies, 2, TurnBaseManager.Instance.isPlayerTurn);//depth tối đa là 2, xem Player là Max, Enemy là Min
+                searchResult = Minimax(OccupiedCell, PlayerUnitCopies, EnemyUnitCopies, 3, TurnBaseManager.Instance.isPlayerTurn);//depth tối đa là 3, xem Player là Max, Enemy là Min
                                                                                                                                   //Debug.Log(searchResult.BestAction.targetPosition.ToString());
                                                                                                                                   //Debug.Log(searchResult.BestAction.unitCopy.unitCopied);
                 Debug.Log("Best move score:" + searchResult.Score.ToString());
@@ -86,8 +86,11 @@ public class AIEnemy : MonoBehaviour
         {
             return new SearchResult(EvaluateState(PlayerUnits,EnemyUnits), new Action(new UnitCopy(Team.Player,Type.Sword,0,0,AttackShape.Melee,0,new Vector2Int(0,0),0,null), new Vector2Int(0, 0)));// cần kiểm tra chỗ nào sử dụng đến Action thì unitCopied của nó không được phép null, nếu null thì bỏ qua vì dữ liệu trong unitCopied này là dữ liệu rác thôi
         }
+        int BestScore;
+        Action BestAction = new Action();
         if (maximizingPlayer)
         {
+            BestScore = int.MinValue;
             foreach (Action action in GetAllPossibleAction(PlayerUnits, OccupiedCellsCopy))
             {
                 if(action.unitCopy.unitCopied!=null)
@@ -134,10 +137,13 @@ public class AIEnemy : MonoBehaviour
 
 
                     ////
-                    searchResult = new SearchResult(alphabeta(State.OccupiedCellsCopy,State.PlayerUnits, State.EnemyUnits, depth - 1, alpha, beta, false).Score, action);
-                    alpha = Mathf.Max(alpha, searchResult.Score);
-                    searchResult.Score = alpha;
-                    
+                    SearchResult searchResult0 = new SearchResult(alphabeta(State.OccupiedCellsCopy,State.PlayerUnits, State.EnemyUnits, depth - 1, alpha, beta, false).Score, action);
+                    if(searchResult0.Score>BestScore)
+                    {
+                        BestScore = searchResult0.Score;
+                        BestAction = action;
+                        alpha = Mathf.Max(alpha, searchResult.Score);
+                    }
                     if (beta <= alpha)
                     {
                         break; // Beta cut-off
@@ -145,12 +151,12 @@ public class AIEnemy : MonoBehaviour
                 }
                 //Debug.Log("Depth" + depth.ToString() + ": valueInProcess :" + searchResult.Score);
             }
-            Debug.Log("Depth" + depth.ToString() + ": value :" + searchResult.Score);
+            Debug.Log("Depth" + depth.ToString() + ": value :" + BestScore);
             Debug.Log("Beta value :" + beta + "Alpha value :" + alpha);
-            return searchResult;
         }
         else
         {
+            BestScore = int.MaxValue;
             foreach (Action action in GetAllPossibleAction(EnemyUnits, OccupiedCellsCopy))
             {
                 if (action.unitCopy.unitCopied != null)
@@ -198,11 +204,13 @@ public class AIEnemy : MonoBehaviour
                     //{
                     //    Debug.Log("occupied cell:" + occupiedCell);
                     //}
-                    searchResult = new SearchResult(alphabeta(State.OccupiedCellsCopy, State.PlayerUnits, State.EnemyUnits, depth - 1, alpha, beta, true).Score, action);
-                    beta = Mathf.Min(beta, searchResult.Score);
-                    searchResult.Score = beta;
-
-
+                    SearchResult searchResult0 = new SearchResult(alphabeta(State.OccupiedCellsCopy, State.PlayerUnits, State.EnemyUnits, depth - 1, alpha, beta, true).Score, action);
+                    if(searchResult0.Score<BestScore)
+                    {
+                        BestScore = searchResult0.Score;
+                        BestAction = action;
+                        beta = Mathf.Min(beta, searchResult.Score);
+                    }
                     if (beta <= alpha)
                     {
                         break; // Alpha cut-off
@@ -210,10 +218,11 @@ public class AIEnemy : MonoBehaviour
                 }
                 //Debug.Log("Depth" + depth.ToString() + ": valueInProcess :" + searchResult.Score);
             }
-            Debug.Log("Depth" + depth.ToString() + ": value :" + searchResult.Score);
+            Debug.Log("Depth" + depth.ToString() + ": value :" + BestScore);
             Debug.Log("Beta value :" + beta + "Alpha value :" + alpha);
-            return searchResult;
+            
         }
+        return new SearchResult(BestScore,BestAction);
     }
 
     private int GetTypeUnitValue(Type t)
